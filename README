@@ -1,0 +1,19 @@
+# Louis Marelle, 2021/09/29
+#
+# The MATLAB routine update_seaice_depth_and_snow.m interpolates ASR2 seaice data to the WRF grid, and writes it into met_em files.
+# 
+
+#--------How to use --------
+- Get ASR2 data from NCAR RDA at https://rda.ucar.edu/datasets/ds631.1/ (requires
+creating an account) - Get variables ICEDEPTH and ALBSI (ice depth and sea ice albedo)
+
+- Update these variables and these paths to your ASR2 data and to met_em files in
+update_seaice_depth_and_snow.m:
+  ASR2_DIR = 'path to ASR2 data';
+  WPS_DIR = 'path to WPS data'
+  USE_ASR2_SEAICE = true; % If set to false, default constant values are used instead of ASR2
+  MAX_DOMAINS = 3;  % number of WRF domains for nested runs
+
+- Run the script using matlab (tested only with the 2016 version and later)
+matlab < update_seaice_depth_and_snow.m
+
