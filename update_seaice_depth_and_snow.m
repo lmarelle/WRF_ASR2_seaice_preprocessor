@@ -8,7 +8,7 @@ close all
 %-------- Input --------
 ASR2_DIR = 'path to ASR2 data';
 WPS_DIR = 'path to WPS data'
-USE_ASR2_SEAICE = true; % If set to false, default constant values are used instead of ASR2
+USE_ASR2_SEAICE = false; % If set to false, default constant values are used instead of ASR2
 MAX_DOMAINS = 1;  % number of WRF domains for nested runs
 
 
@@ -116,6 +116,7 @@ for idomain = 1:MAX_DOMAINS
       asr2_icedepth_wrfgrid(wrf_seaice > 0.0 & isnan(asr2_icedepth_wrfgrid)) = 2.0;
       asr2_icedepth_wrfgrid(isnan(asr2_icedepth_wrfgrid)) = 0.0;
     else
+      asr2_icedepth_wrfgrid = zeros(size(wrf_seaice));
       asr2_icedepth_wrfgrid(:) = ICEDEPTH_SEAICE;
 
     end % if USE_ASR2_SEAICE
